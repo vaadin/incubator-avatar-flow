@@ -44,6 +44,7 @@ avatar.setTooltipAlignment(Avatar.Alignment.RIGHT);
 avatar.addClickListener(clickEvent -> {
     Notification notification = new Notification(
             "You clicked on the avatar", 3000);
+    notification.open();
 });
 ```
 
