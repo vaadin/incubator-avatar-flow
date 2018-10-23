@@ -186,7 +186,7 @@ public class Avatar extends Component implements HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return <code>true</code> if tooltip is enable
+     * @return <code>true</code> if tooltip is enabled
      *         <code>false</code> otherwise
      *
      */
