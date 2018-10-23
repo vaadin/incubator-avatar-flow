@@ -90,7 +90,7 @@ public class Avatar extends Component implements HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return avatar's name
+     * @return name avatar's name
      */
     public String getName() {
         return getElement().getProperty(NAME_PROPERTY, "");
@@ -131,8 +131,8 @@ public class Avatar extends Component implements HasStyle {
      * It encodes the bytes to base64.
      * After that the image is converted to data URI.
      * </p>
-     * @param bytes
-     * @param contentType
+     * @param bytes image's bytes
+     * @param contentType MIME type
      */
     public void setImage(byte[] bytes, String contentType) {
         String encodedImg = Base64.getEncoder().encodeToString(bytes);
@@ -147,7 +147,7 @@ public class Avatar extends Component implements HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return
+     * @return img string representation of the image
      */
     public String getImage() {
         return getElement().getProperty(IMAGE_PROPERTY, "");
@@ -174,7 +174,7 @@ public class Avatar extends Component implements HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return avatar's abbreviation
+     * @return abbr avatar's abbreviation
      */
     public String getAbbreviation() {
         return getElement().getProperty(ABBR_PROPERTY);
@@ -186,7 +186,9 @@ public class Avatar extends Component implements HasStyle {
      * the returned value may not be the same as in client side.
      * </p>
      *
-     * @return
+     * @return <code>true</code> if tooltip is enable
+     *         <code>false</code> otherwise
+     *
      */
     public boolean isToolTipEnabled() {
         return getElement().getProperty(NO_TOOLTIP_PROPERTY, false);
