@@ -32,7 +32,8 @@ import com.vaadin.flow.router.Route;
 @Route("avatar")
 public class AvatarView extends DemoView {
 
-    public final String IMAGE_PATH = "src/main/resources/images/user.png";
+    public final String IMG_URL = "https://mbtskoudsalg.com/images/pacman-blue-ghost-png-2.png";
+    public final String USR_IMAGE_PATH = "src/main/resources/images/user.png";
 
     @Override
     protected void initView() {
@@ -44,17 +45,16 @@ public class AvatarView extends DemoView {
 
     private void exampleAvatarImageURL(){
         Avatar avatar = new Avatar();
-        avatar.setImage("https://banner2.kisspng.com/20171216/6c0/google-png-5a3554027e9924.3682726615134443545186.jpg");
+        avatar.setImage(IMG_URL);
 
-        addCard("Avatar - Image (URL)", avatar);
+        addCard("Avatar - Image from URL", avatar);
     }
 
     private void exampleAvatarImagePath(){
         Avatar avatar = new Avatar();
-        String path = IMAGE_PATH;
-        avatar.setImage(path,"image/png");
+        avatar.setImage(USR_IMAGE_PATH,"image/png");
 
-        addCard("Avatar - Image (resources)", avatar);
+        addCard("Avatar - Image from resources", avatar);
     }
 
     private void exampleAvatarAbbreviationToolTip(){

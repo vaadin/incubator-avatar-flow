@@ -54,6 +54,8 @@ The Demo can be run going to the project incubator-avatar-flow-vaadincom-demo an
 
 ```mvn jetty:run```
 
+After server startup, you'll be able find the demo at[http://localhost:8080/avatar](http://localhost:8080/avatar)
+
 
 ## License & Author
 

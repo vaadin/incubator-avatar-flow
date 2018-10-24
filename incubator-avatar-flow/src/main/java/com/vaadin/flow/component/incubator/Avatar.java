@@ -26,7 +26,6 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.DomEvent;
-import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
@@ -84,11 +83,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the avatar's name.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return name avatar's name
      */
@@ -107,11 +104,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Sets the avatar's image from a image path.
-     *
      * <p>
      * It opens the image, reads the bytes and encodes them to base64.
      * After that the image is converted to data URI.
-     * </p>
      *
      * @param imagePath path of the image
      * @param contentType MIME type
@@ -126,11 +121,10 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Sets the avatar's image from an array of bytes.
-     *
      * <p>
      * It encodes the bytes to base64.
      * After that the image is converted to data URI.
-     * </p>
+     *
      * @param bytes image's bytes
      * @param contentType MIME type
      */
@@ -145,7 +139,6 @@ public class Avatar extends Component implements HasStyle {
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return img string representation of the image
      */
@@ -155,11 +148,10 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Sets the abbreviations of the avatar.
-     *
      * <p>
      * This method does not have effect if the avatar's name is already specified.
      * The avatar's abbreviations is take from the name.
-     * </p>
+     * 
      * @param abbr avatar's abbreviation
      */
     public void setAbbreviation(String abbr) {
@@ -168,11 +160,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the abbreviations of the avatar's name.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return abbr avatar's abbreviation
      */
@@ -184,11 +174,9 @@ public class Avatar extends Component implements HasStyle {
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return <code>true</code> if tooltip is enabled
      *         <code>false</code> otherwise
-     *
      */
     public boolean isToolTipEnabled() {
         return getElement().getProperty(NO_TOOLTIP_PROPERTY, false);
@@ -204,7 +192,6 @@ public class Avatar extends Component implements HasStyle {
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return <code>true</code> the avatar has an image
      * <code>false</code>, otherwise
@@ -233,11 +220,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the position of the tooltip.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return position "top","right","left" or "bottom"
      */
@@ -247,11 +232,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the position of the tooltip.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return position The position of the tooltip {@link Position}
      **/
@@ -279,11 +262,9 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the alignment of the tooltip.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return alignment "top","right","left" or "bottom"
      */
@@ -293,23 +274,15 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the alignment of the tooltip.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
-     * </p>
      *
      * @return alignment The alignment of the tooltip {@link Alignment}
      **/
     public Alignment getTooltipAlignment() {
         return Alignment.getAlignment(getTooltipAlignmentText());
     }
-
-    private byte[] getBytesFromFile(String imagePath) throws IOException {
-        File file = new File(imagePath);
-        return Files.readAllBytes(file.toPath());
-    }
-
 
     /**
      * Adds a listener for {@code ClickEvent}.
@@ -334,6 +307,8 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Helper enumeration to specify the position of the <code>Tooltip</code>.
+     * Position determines if the tooltip will be positioned on the top, bottom,
+     * left or right of the attached component.
      */
     public enum Position {
         TOP("top"),
@@ -363,6 +338,16 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Helper enumeration to specify the alignment of the <code>Tooltip</code>.
+     * The alignment determines the placement of the tooltip in the chosen position.
+     * <p>
+     * i.e.     alignment bottom    alignment top
+     *          !!!!!!!!!!!!!
+     *          !           !
+     * ------   !           !       !!!!!!!!!!!!!
+     * |Button| !           !       !           !
+     * ------   !!!!!!!!!!!!!       !           !
+     *                              !           !
+     *                              !!!!!!!!!!!!!
      */
     public enum Alignment {
         TOP("top"),
@@ -388,5 +373,10 @@ public class Avatar extends Component implements HasStyle {
             }
             return null;
         }
+    }
+
+    private byte[] getBytesFromFile(String imagePath) throws IOException {
+        File file = new File(imagePath);
+        return Files.readAllBytes(file.toPath());
     }
 }
