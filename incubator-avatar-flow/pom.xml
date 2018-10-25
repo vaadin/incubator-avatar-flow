@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.vaadin.webjar</groupId>
             <artifactId>incubator-avatar</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.4</version>
         </dependency>
     </dependencies>
 
@@ -50,7 +50,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>false</addClasspath>
-                            <!-- Implementation-Title and Implementation-Version 
+                            <!-- Implementation-Title and Implementation-Version
                                 come from the POM by default -->
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
@@ -62,7 +62,7 @@
                             <AdVaaLicen>cval</AdVaaLicen>
                             <AdVaaName>incubator-avatar</AdVaaName>
                             <AdVaaPkg>com.vaadin.incubator.avatar</AdVaaPkg>
-                            <!-- Implementation-Title and Implementation-Version 
+                            <!-- Implementation-Title and Implementation-Version
                                 come from the POM by default -->
                             <Implementation-Title>Vaadin Crud</Implementation-Title>
                         </manifestEntries>
