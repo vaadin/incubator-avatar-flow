@@ -135,7 +135,6 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Gets the avatar's image.
-     *
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
@@ -171,19 +170,25 @@ public class Avatar extends Component implements HasStyle {
     }
 
     /**
+     * Checks if the avatar's tooltip is enabled.
      * <p>
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
      *
-     * @return <code>true</code> if tooltip is enabled
+     * @return <code>true</code> if avatar's tooltip is enabled
      *         <code>false</code> otherwise
      */
     public boolean isToolTipEnabled() {
         return getElement().getProperty(NO_TOOLTIP_PROPERTY, false);
     }
 
-    public boolean setToolTipEnabled(boolean enabled) {
-        return getElement().getProperty(NO_TOOLTIP_PROPERTY, enabled);
+    /**
+     * Enables or disables the avatar's tooltip.
+     *
+     * @param enabled enable or disable
+     */
+    public void setToolTipEnabled(boolean enabled) {
+        getElement().setProperty(NO_TOOLTIP_PROPERTY, !enabled);
     }
 
     /**
@@ -245,7 +250,7 @@ public class Avatar extends Component implements HasStyle {
     /**
      * Sets the alignment of the tooltip.
      *
-     * @param alignment alignment "top","right","left" or "bottom"
+     * @param alignment alignment "top","right","left","bottom" or "center"
      */
     public void setTooltipAlignment(String alignment) {
         getElement().setProperty(TOOLTIP_ALIGN_PROPERTY, alignment);
@@ -266,7 +271,7 @@ public class Avatar extends Component implements HasStyle {
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
      *
-     * @return alignment "top","right","left" or "bottom"
+     * @return alignment "top","right","left","bottom" or "center"
      */
     public String getTooltipAlignmentText() {
         return getElement().getProperty(TOOLTIP_ALIGN_PROPERTY);
@@ -338,6 +343,7 @@ public class Avatar extends Component implements HasStyle {
 
     /**
      * Helper enumeration to specify the alignment of the <code>Tooltip</code>.
+     * <p>
      * The alignment determines the placement of the tooltip in the chosen position.
      * <p>
      * i.e.     alignment bottom    alignment top
@@ -353,7 +359,8 @@ public class Avatar extends Component implements HasStyle {
         TOP("top"),
         RIGHT("right"),
         LEFT("left"),
-        BOTTOM("bottom");
+        BOTTOM("bottom"),
+        CENTER("center");
 
         private String align;
 
