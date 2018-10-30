@@ -269,31 +269,10 @@ public class Avatar extends Component implements HasStyle {
     /**
      * Sets the position of the tooltip.
      *
-     * @param position "top","right","left" or "bottom"
-     */
-    private void setTooltipPosition(String position) {
-        getElement().setProperty(TOOLTIP_POSITION_PROPERTY, position);
-    }
-
-    /**
-     * Sets the position of the tooltip.
-     *
      * @param position The position of the tooltip {@link TooltipPosition}
      */
     public void setTooltipPosition(TooltipPosition position) {
         setTooltipPosition(position.getPositionText());
-    }
-
-    /**
-     * Gets the position of the tooltip.
-     * <p>
-     * This property is not synchronized automatically from the client side, so
-     * the returned value may not be the same as in client side.
-     *
-     * @return position "top","right","left" or "bottom"
-     */
-    private String getTooltipPositionText() {
-        return getElement().getProperty(TOOLTIP_POSITION_PROPERTY);
     }
 
     /**
@@ -311,31 +290,10 @@ public class Avatar extends Component implements HasStyle {
     /**
      * Sets the alignment of the tooltip.
      *
-     * @param alignment alignment "top","right","left","bottom" or "center"
-     */
-    private void setTooltipAlignment(String alignment) {
-        getElement().setProperty(TOOLTIP_ALIGN_PROPERTY, alignment);
-    }
-
-    /**
-     * Sets the alignment of the tooltip.
-     *
      * @param alignment The alignment of the tooltip {@link TooltipAlignment}
      */
     public void setTooltipAlignment(TooltipAlignment alignment) {
         setTooltipAlignment(alignment.getAlignmentText());
-    }
-
-    /**
-     * Gets the alignment of the tooltip.
-     * <p>
-     * This property is not synchronized automatically from the client side, so
-     * the returned value may not be the same as in client side.
-     *
-     * @return alignment "top","right","left","bottom" or "center"
-     */
-    private String getTooltipAlignmentText() {
-        return getElement().getProperty(TOOLTIP_ALIGN_PROPERTY);
     }
 
     /**
@@ -369,6 +327,48 @@ public class Avatar extends Component implements HasStyle {
         public ClickEvent(Avatar source, boolean fromClient) {
             super(source, fromClient);
         }
+    }
+
+    /**
+     * Sets the position of the tooltip.
+     *
+     * @param position "top","right","left" or "bottom"
+     */
+    private void setTooltipPosition(String position) {
+        getElement().setProperty(TOOLTIP_POSITION_PROPERTY, position);
+    }
+
+    /**
+     * Gets the position of the tooltip.
+     * <p>
+     * This property is not synchronized automatically from the client side, so
+     * the returned value may not be the same as in client side.
+     *
+     * @return position "top","right","left" or "bottom"
+     */
+    private String getTooltipPositionText() {
+        return getElement().getProperty(TOOLTIP_POSITION_PROPERTY);
+    }
+
+    /**
+     * Sets the alignment of the tooltip.
+     *
+     * @param alignment alignment "top","right","left","bottom" or "center"
+     */
+    private void setTooltipAlignment(String alignment) {
+        getElement().setProperty(TOOLTIP_ALIGN_PROPERTY, alignment);
+    }
+
+    /**
+     * Gets the alignment of the tooltip.
+     * <p>
+     * This property is not synchronized automatically from the client side, so
+     * the returned value may not be the same as in client side.
+     *
+     * @return alignment "top","right","left","bottom" or "center"
+     */
+    private String getTooltipAlignmentText() {
+        return getElement().getProperty(TOOLTIP_ALIGN_PROPERTY);
     }
 
     private byte[] getBytesFromFile(String imagePath) throws IOException {
