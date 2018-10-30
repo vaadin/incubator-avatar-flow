@@ -45,6 +45,17 @@ import com.vaadin.flow.shared.Registration;
 @HtmlImport("bower_components/incubator-avatar/src/incubator-avatar.html")
 public class Avatar extends Component implements HasStyle {
 
+    /**
+     * Click event on the component.
+     */
+    @DomEvent("click")
+    public static class ClickEvent extends ComponentEvent<Avatar> {
+
+        public ClickEvent(Avatar source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+
     // client-side component property constants
     private final String NAME_PROPERTY = "name";
     private final String IMAGE_PROPERTY = "image";
@@ -60,20 +71,7 @@ public class Avatar extends Component implements HasStyle {
      * The tooltip will not appear if the avatar's name is empty.
      */
     public Avatar() {
-        this(true);
-    }
-
-    /**
-     * Sets the Avatar, enabling or disabling the tooltip.
-     * <p>
-     * The tooltip will not appear if the avatar's name is empty.
-     *
-     * @param tooltipEnabled enable or disable
-     *
-     * @see #setToolTipEnabled(boolean)
-     */
-    public Avatar(boolean tooltipEnabled) {
-        setToolTipEnabled(tooltipEnabled);
+        setToolTipEnabled(true);
     }
 
     /**
@@ -87,19 +85,7 @@ public class Avatar extends Component implements HasStyle {
      * @see #setName(String)
      */
     public Avatar(String name) {
-        this(name,true);
-    }
-
-    /**
-     * Sets an Avatar, initializing its name and enabling or disabling the tooltip.
-     * <p>
-     * The tooltip will not appear if the avatar's name is empty.
-     *
-     * @param name avatar's name
-     * @param tooltipEnabled enable or disable
-     */
-    public Avatar(String name, boolean tooltipEnabled) {
-        this(tooltipEnabled);
+        this();
         setName(name);
     }
 
@@ -316,17 +302,6 @@ public class Avatar extends Component implements HasStyle {
      */
     public Registration addClickListener(ComponentEventListener<ClickEvent> listener) {
         return addListener(ClickEvent.class, listener);
-    }
-
-    /**
-     * Click event on the component.
-     */
-    @DomEvent("click")
-    public static class ClickEvent extends ComponentEvent<Avatar> {
-
-        public ClickEvent(Avatar source, boolean fromClient) {
-            super(source, fromClient);
-        }
     }
 
     /**

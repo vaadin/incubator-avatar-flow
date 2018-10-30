@@ -10,6 +10,12 @@ Incubator Avatar displays an image or abbreviations that represents the user's a
 
 # How is it used?
 
+Incubator Avatar can be used in an easy way. Avatar represents a character or user giving him a
+name an abbr or image as a visual identifier. A tooltip (enable by default) can be enable or disable
+to display the name of the avatar when hover on it.
+
+The abbr is generated from the Avatar's name initials. E.g. John Smith - JS.
+
 ## Avatar - Image (URL)
 ```java
 Avatar avatar = new Avatar();
@@ -24,12 +30,18 @@ String path = IMAGE_PATH;
 avatar.setImage(path,"image/png");
 ```
 
-## Avatar - Abbreviations & tooltip
+## Avatar - Name and tooltip
 
 ```java
 Avatar avatar = new Avatar("John Smith");
 avatar.setTooltipPosition(TooltipPosition.RIGHT);
 avatar.setTooltipAlignment(TooltipAlignment.BOTTOM);
+```
+
+or
+
+```java
+Avatar avatar = new Avatar("John Smith", TooltipPosition.RIGHT, TooltipAlignment.BOTTOM);
 ```
 
 ## Avatar - Click listener
