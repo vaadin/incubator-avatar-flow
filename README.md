@@ -1,6 +1,4 @@
-# Incubator avatar for Flow
-
-# incubator-avatar;
+# Incubator Avatar for Flow
 
 [Live Demo ↗](https://incubator.app.fi/incubator-avatar-demo/index.html)
 
@@ -8,7 +6,7 @@
 
 # What does the component do?
 
-It displays an image or abbreviations that represents the user's avatar.
+Incubator Avatar displays an image or abbreviations that represents the user's avatar.
 
 # How is it used?
 
@@ -30,16 +28,16 @@ avatar.setImage(path,"image/png");
 
 ```java
 Avatar avatar = new Avatar("John Smith");
-avatar.setTooltipPosition(Avatar.Position.RIGHT);
-avatar.setTooltipAlignment(Avatar.Alignment.BOTTOM);
+avatar.setTooltipPosition(TooltipPosition.RIGHT);
+avatar.setTooltipAlignment(TooltipAlignment.BOTTOM);
 ```
 
 ## Avatar - Click listener
 ```java
 Avatar avatar = new Avatar();
 avatar.setName("Second Example abbreviation");
-avatar.setTooltipPosition(Avatar.Position.BOTTOM);
-avatar.setTooltipAlignment(Avatar.Alignment.RIGHT);
+avatar.setTooltipPosition(TooltipPosition.BOTTOM);
+avatar.setTooltipAlignment(TooltipAlignment.RIGHT);
 
 avatar.addClickListener(clickEvent -> {
     Notification notification = new Notification(
@@ -81,10 +79,6 @@ Clone the project in GitHub (or fork it if you plan on contributing)
 ```
 git clone git@github.com/vaadin/incubator-avatar-flow.git
 ```
-
-To build and install the project into the local repository run 
-
-```mvn install -DskipITs```
 
 in the root directory. `-DskipITs` will skip the integration tests, which require a TestBench license. If you want to run all tests as part of the build, run
 

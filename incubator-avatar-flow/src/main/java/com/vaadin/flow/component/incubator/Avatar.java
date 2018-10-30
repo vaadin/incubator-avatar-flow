@@ -55,24 +55,83 @@ public class Avatar extends Component implements HasStyle {
     private final String WITH_IMAGE = "withImage";
 
     /**
-     * Default constructor.
+     * Default constructor. The tooltip is enable by default.
+     * <p>
+     * The tooltip will not appear if the avatar's name is empty.
      */
     public Avatar() {
-        setToolTipEnabled(true);
+        this(true);
+    }
+
+    /**
+     * Sets the Avatar, enabling or disabling the tooltip.
+     * <p>
+     * The tooltip will not appear if the avatar's name is empty.
+     *
+     * @param tooltipEnabled enable or disable
+     *
+     * @see #setToolTipEnabled(boolean)
+     */
+    public Avatar(boolean tooltipEnabled) {
+        setToolTipEnabled(tooltipEnabled);
     }
 
     /**
      * Sets an Avatar, initializing its name.
+     * <p>
+     * The tooltip is enabled by default.
+     * The tooltip will not appear if the avatar's name is empty.
      *
      * @param name avatar's name
      *
      * @see #setName(String)
      */
     public Avatar(String name) {
-        this();
+        this(name,true);
+    }
+
+    /**
+     * Sets an Avatar, initializing its name and enabling or disabling the tooltip.
+     * <p>
+     * The tooltip will not appear if the avatar's name is empty.
+     *
+     * @param name avatar's name
+     * @param tooltipEnabled enable or disable
+     */
+    public Avatar(String name, boolean tooltipEnabled) {
+        this(tooltipEnabled);
         setName(name);
     }
 
+    /**
+     * Sets an Avatar, initializing its name and setting the tooltip's position.
+     * <p>
+     * The tooltip is enabled by default.
+     * The tooltip will not appear if the avatar's name is empty.
+     *
+     * @param name avatar's name
+     * @param tooltipPosition The position of the tooltip {@link TooltipPosition}
+     */
+    public Avatar(String name, TooltipPosition tooltipPosition) {
+        this(name);
+        setTooltipPosition(tooltipPosition);
+    }
+
+    /**
+     * Sets an Avatar, initializing its name, setting the tooltip's position and
+     * alignment.
+     * <p>
+     * The tooltip is enabled by default.
+     * The tooltip will not appear if the avatar's name is empty.
+     *
+     * @param name avatar's name
+     * @param tooltipPosition The position of the tooltip {@link TooltipPosition}
+     * @param tooltipAlignment The alignment of the tooltip {@link TooltipAlignment}
+     */
+    public Avatar(String name, TooltipPosition tooltipPosition, TooltipAlignment tooltipAlignment) {
+        this(name,tooltipPosition);
+        setTooltipAlignment(tooltipAlignment);
+    }
 
     /**
      * Sets the avatar's name.
@@ -117,7 +176,7 @@ public class Avatar extends Component implements HasStyle {
         try {
             setImage(getBytesFromFile(imagePath),contentType);
         } catch (IOException e) {
-            throw new RuntimeException("It was not possible to set the image from path: " + imagePath);
+            throw new RuntimeException("It was not possible to set the image from the path: " + imagePath);
         }
     }
 
@@ -212,17 +271,17 @@ public class Avatar extends Component implements HasStyle {
      *
      * @param position "top","right","left" or "bottom"
      */
-    public void setTooltipPosition(String position) {
+    private void setTooltipPosition(String position) {
         getElement().setProperty(TOOLTIP_POSITION_PROPERTY, position);
     }
 
     /**
      * Sets the position of the tooltip.
      *
-     * @param position The position of the tooltip {@link Position}
+     * @param position The position of the tooltip {@link TooltipPosition}
      */
-    public void setTooltipPosition(Position position) {
-        getElement().setProperty(TOOLTIP_POSITION_PROPERTY, position.getPositionText());
+    public void setTooltipPosition(TooltipPosition position) {
+        setTooltipPosition(position.getPositionText());
     }
 
     /**
@@ -233,7 +292,7 @@ public class Avatar extends Component implements HasStyle {
      *
      * @return position "top","right","left" or "bottom"
      */
-    public String getTooltipPositionText() {
+    private String getTooltipPositionText() {
         return getElement().getProperty(TOOLTIP_POSITION_PROPERTY);
     }
 
@@ -243,10 +302,10 @@ public class Avatar extends Component implements HasStyle {
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
      *
-     * @return position The position of the tooltip {@link Position}
+     * @return position The position of the tooltip {@link TooltipPosition}
      **/
-    public Position getTooltipPosition() {
-        return Position.getPosition(getTooltipPositionText());
+    public TooltipPosition getTooltipPosition() {
+        return TooltipPosition.getPosition(getTooltipPositionText());
     }
 
     /**
@@ -254,17 +313,17 @@ public class Avatar extends Component implements HasStyle {
      *
      * @param alignment alignment "top","right","left","bottom" or "center"
      */
-    public void setTooltipAlignment(String alignment) {
+    private void setTooltipAlignment(String alignment) {
         getElement().setProperty(TOOLTIP_ALIGN_PROPERTY, alignment);
     }
 
     /**
      * Sets the alignment of the tooltip.
      *
-     * @param alignment The alignment of the tooltip {@link Alignment}
+     * @param alignment The alignment of the tooltip {@link TooltipAlignment}
      */
-    public void setTooltipAlignment(Alignment alignment) {
-        getElement().setProperty(TOOLTIP_ALIGN_PROPERTY, alignment.getAlignmentText());
+    public void setTooltipAlignment(TooltipAlignment alignment) {
+        setTooltipAlignment(alignment.getAlignmentText());
     }
 
     /**
@@ -275,7 +334,7 @@ public class Avatar extends Component implements HasStyle {
      *
      * @return alignment "top","right","left","bottom" or "center"
      */
-    public String getTooltipAlignmentText() {
+    private String getTooltipAlignmentText() {
         return getElement().getProperty(TOOLTIP_ALIGN_PROPERTY);
     }
 
@@ -285,10 +344,10 @@ public class Avatar extends Component implements HasStyle {
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
      *
-     * @return alignment The alignment of the tooltip {@link Alignment}
+     * @return alignment The alignment of the tooltip {@link TooltipAlignment}
      **/
-    public Alignment getTooltipAlignment() {
-        return Alignment.getAlignment(getTooltipAlignmentText());
+    public TooltipAlignment getTooltipAlignment() {
+        return TooltipAlignment.getAlignment(getTooltipAlignmentText());
     }
 
     /**
@@ -309,78 +368,6 @@ public class Avatar extends Component implements HasStyle {
 
         public ClickEvent(Avatar source, boolean fromClient) {
             super(source, fromClient);
-        }
-    }
-
-    /**
-     * Helper enumeration to specify the position of the <code>Tooltip</code>.
-     * Position determines if the tooltip will be positioned on the top, bottom,
-     * left or right of the attached component.
-     */
-    public enum Position {
-        TOP("top"),
-        RIGHT("right"),
-        LEFT("left"),
-        BOTTOM("bottom");
-
-        private String pos;
-
-        Position(String pos) {
-            this.pos = pos;
-        }
-
-        public String getPositionText() {
-            return pos;
-        }
-
-        public static Position getPosition(String text) {
-            for (Position position : Position.values()) {
-                if (position.getPositionText().equals(text)) {
-                    return position;
-                }
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Helper enumeration to specify the alignment of the <code>Tooltip</code>.
-     * <p>
-     * The alignment determines the placement of the tooltip in the chosen position.
-     * <p>
-     * i.e.     alignment bottom    alignment top
-     *          !!!!!!!!!!!!!
-     *          !           !
-     * ------   !           !       !!!!!!!!!!!!!
-     * |Button| !           !       !           !
-     * ------   !!!!!!!!!!!!!       !           !
-     *                              !           !
-     *                              !!!!!!!!!!!!!
-     */
-    public enum Alignment {
-        TOP("top"),
-        RIGHT("right"),
-        LEFT("left"),
-        BOTTOM("bottom"),
-        CENTER("center");
-
-        private String align;
-
-        Alignment(String align) {
-            this.align = align;
-        }
-
-        public String getAlignmentText() {
-            return align;
-        }
-
-        public static Alignment getAlignment(String text) {
-            for (Alignment alignment : Alignment.values()) {
-                if (alignment.getAlignmentText().equals(text)) {
-                    return alignment;
-                }
-            }
-            return null;
         }
     }
 

@@ -20,6 +20,8 @@ package com.vaadin.flow.component.incubator.vaadincom;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.incubator.Avatar;
+import com.vaadin.flow.component.incubator.TooltipAlignment;
+import com.vaadin.flow.component.incubator.TooltipPosition;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -63,8 +65,8 @@ public class AvatarView extends DemoView {
 
     private void exampleAvatarAbbreviationToolTip(){
         Avatar avatar = new Avatar("John Smith");
-        avatar.setTooltipPosition(Avatar.Position.RIGHT);
-        avatar.setTooltipAlignment(Avatar.Alignment.BOTTOM);
+        avatar.setTooltipPosition(TooltipPosition.RIGHT);
+        avatar.setTooltipAlignment(TooltipAlignment.BOTTOM);
         addCard("Avatar - Abbreviations and tooltip", avatar);
     }
 
@@ -95,8 +97,8 @@ public class AvatarView extends DemoView {
     private void exampleAvatarAbbreviationToolTipClickButton(){
         Avatar avatar = new Avatar();
         avatar.setName("Click on the avatar!");
-        avatar.setTooltipPosition(Avatar.Position.BOTTOM);
-        avatar.setTooltipAlignment(Avatar.Alignment.RIGHT);
+        avatar.setTooltipPosition(TooltipPosition.BOTTOM);
+        avatar.setTooltipAlignment(TooltipAlignment.RIGHT);
 
         avatar.addClickListener(clickEvent -> {
             Notification notification = new Notification(
