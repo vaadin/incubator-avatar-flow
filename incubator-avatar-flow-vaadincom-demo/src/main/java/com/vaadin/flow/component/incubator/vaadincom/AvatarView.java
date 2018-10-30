@@ -42,8 +42,8 @@ public class AvatarView extends DemoView {
         exampleAvatarImageURL();
         exampleAvatarImagePath();
         dynamicNameChange();
-        enableDisableToolip();
         exampleAvatarAbbreviationToolTip();
+        enableDisableToolip();
         exampleAvatarAbbreviationToolTipClickButton();
     }
 
@@ -65,7 +65,7 @@ public class AvatarView extends DemoView {
         Avatar avatar = new Avatar("John Smith");
         avatar.setTooltipPosition(Avatar.Position.RIGHT);
         avatar.setTooltipAlignment(Avatar.Alignment.BOTTOM);
-        addCard("Avatar - Abbreviations & tooltip", avatar);
+        addCard("Avatar - Abbreviations and tooltip", avatar);
     }
 
     private void dynamicNameChange(){
