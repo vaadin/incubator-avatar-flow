@@ -18,9 +18,11 @@ package com.vaadin.flow.component.incubator.vaadincom;
  */
 
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.incubator.Avatar;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
@@ -39,12 +41,14 @@ public class AvatarView extends DemoView {
     protected void initView() {
         exampleAvatarImageURL();
         exampleAvatarImagePath();
+        dynamicNameChange();
+        enableDisableToolip();
         exampleAvatarAbbreviationToolTip();
         exampleAvatarAbbreviationToolTipClickButton();
     }
 
     private void exampleAvatarImageURL(){
-        Avatar avatar = new Avatar();
+        Avatar avatar = new Avatar("Diego");
         avatar.setImage(IMG_URL);
 
         addCard("Avatar - Image from URL", avatar);
@@ -64,9 +68,33 @@ public class AvatarView extends DemoView {
         addCard("Avatar - Abbreviations & tooltip", avatar);
     }
 
+    private void dynamicNameChange(){
+        Avatar avatar = new Avatar("Sophia Wilson");
+
+        TextField nameTF = new TextField("Avatar's name");
+        nameTF.setValue(avatar.getName());
+        nameTF.setValueChangeMode(ValueChangeMode.EAGER);
+
+        nameTF.addValueChangeListener(event -> {
+            avatar.setName(event.getValue());
+        });
+
+        addCard("Avatar - Change in name", avatar,nameTF);
+    }
+
+    private void enableDisableToolip(){
+        Avatar avatar = new Avatar("Sophia Wilson");
+
+        Button actionButton = new Button("enable/disable", event -> {
+            avatar.setToolTipEnabled(!avatar.isToolTipEnabled());
+        });
+
+        addCard("Avatar - Disabling and enabling tooltip", avatar, actionButton);
+    }
+
     private void exampleAvatarAbbreviationToolTipClickButton(){
         Avatar avatar = new Avatar();
-        avatar.setName("Second Example abbreviation");
+        avatar.setName("Click on the avatar!");
         avatar.setTooltipPosition(Avatar.Position.BOTTOM);
         avatar.setTooltipAlignment(Avatar.Alignment.RIGHT);
 

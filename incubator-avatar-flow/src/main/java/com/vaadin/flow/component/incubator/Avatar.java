@@ -58,6 +58,7 @@ public class Avatar extends Component implements HasStyle {
      * Default constructor.
      */
     public Avatar() {
+        setToolTipEnabled(true);
     }
 
     /**
@@ -68,6 +69,7 @@ public class Avatar extends Component implements HasStyle {
      * @see #setName(String)
      */
     public Avatar(String name) {
+        this();
         setName(name);
     }
 
@@ -179,7 +181,7 @@ public class Avatar extends Component implements HasStyle {
      *         <code>false</code> otherwise
      */
     public boolean isToolTipEnabled() {
-        return getElement().getProperty(NO_TOOLTIP_PROPERTY, false);
+        return !getElement().getProperty(NO_TOOLTIP_PROPERTY, false);
     }
 
     /**
@@ -198,8 +200,8 @@ public class Avatar extends Component implements HasStyle {
      * This property is not synchronized automatically from the client side, so
      * the returned value may not be the same as in client side.
      *
-     * @return <code>true</code> the avatar has an image
-     * <code>false</code>, otherwise
+     * @return  <code>true</code> the avatar has an image
+     *          <code>false</code>, otherwise
      */
     public boolean hasImage() {
         return getElement().getProperty(WITH_IMAGE, false);
