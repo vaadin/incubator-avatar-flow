@@ -48,6 +48,16 @@ avatar.addClickListener(clickEvent -> {
 });
 ```
 
+## Avatar - Enabling and Disabling tooltip
+```java
+Avatar avatar = new Avatar("Sophia Wilson");
+
+Button actionButton = new Button("enable/disable", event -> {
+    avatar.setToolTipEnabled(!avatar.isToolTipEnabled());
+});
+
+```
+
 # How to run the demo?
 
 The Demo can be run going to the project incubator-avatar-flow-vaadincom-demo and executing the maven goal:
