@@ -10,9 +10,8 @@ Incubator Avatar displays an image or abbreviations that represents the user's a
 
 # How is it used?
 
-Incubator Avatar can be used in an easy way. Avatar represents a character or user giving him a
-name an abbr or image as a visual identifier. A tooltip (enable by default) can be enable or disable
-to display the name of the avatar when hover on it.
+Avatar is visual identifier that represents user by showing image or name abbreviation(in case image is not set). 
+A tooltip (enable by default) can be enable or disable to display the name of the avatar when hover on it.
 
 The abbr is generated from the Avatar's name initials. E.g. John Smith - JS.
 
@@ -92,6 +91,6 @@ Clone the project in GitHub (or fork it if you plan on contributing)
 git clone git@github.com/vaadin/incubator-avatar-flow.git
 ```
 
-in the root directory. `-DskipITs` will skip the integration tests, which require a TestBench license. If you want to run all tests as part of the build, run
-
+to install project to your maven repository run
+ 
 ```mvn install```
