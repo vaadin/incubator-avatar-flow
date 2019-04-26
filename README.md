@@ -1,3 +1,8 @@
+# Deprecated
+This repository has been deprecated. Please find the latest code here: 
+https://github.com/vaadin-component-factory/vcf-avatar
+
+
 # Incubator Avatar for Flow
 
 [Live Demo ↗](https://incubator.app.fi/incubator-avatar-demo/index.html)
